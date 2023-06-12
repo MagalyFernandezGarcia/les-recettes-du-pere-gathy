@@ -1,5 +1,6 @@
 export enum RECIPE_CATEGORIES {
-  DESERT = "dessert",
+  SWEET = "sucré",
+  SALTY = "salé",
 }
 
 export enum INGREDIENT_UNITS {
@@ -7,7 +8,7 @@ export enum INGREDIENT_UNITS {
   TBSP = "cuillère à soupe",
   TSP = "cuillère à café",
   SPRINKLE = "pincée",
-  PIECE = "pièce"
+  PIECE = "pièce",
 }
 
 export interface IIngredient {
@@ -16,13 +17,17 @@ export interface IIngredient {
   name: string;
 }
 
+export interface IStep {
+  name: string;
+  ingredients?: IIngredient[];
+  instructions: string[];
+}
 export interface IRecipe {
   name: string;
   photo: string;
   servings: number;
   category: RECIPE_CATEGORIES;
-  ingredients: IIngredient[];
-  instructions: string[];
+  steps: IStep[];
 }
 
 export interface IRecipeWithUid extends IRecipe {
