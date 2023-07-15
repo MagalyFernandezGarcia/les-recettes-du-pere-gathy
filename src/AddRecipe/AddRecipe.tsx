@@ -40,6 +40,7 @@ export const AddIngredient = ({
           <input
             id="quantityOfIngredient"
             type="number"
+            step={0.01}
             className="ingredientInput"
             name={"step" + stepIndex + "quantity" + lineNumber}
           ></input>
