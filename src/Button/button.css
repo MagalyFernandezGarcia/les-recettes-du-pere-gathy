@@ -1,0 +1,22 @@
+.navigationButton{
+   
+    min-width: 32px;
+    text-decoration: none;
+    background-color:#8b5cf6;
+    border-radius: 5px;
+    font-weight: bold;
+    border: 1px solid #4c1d95;
+    color: white;
+    padding: 8px;
+    margin-top: 8px;
+   
+}
+
+.navigationButton :link{
+    text-decoration: none;
+}
+.navigationButton :visited{
+    text-decoration: none;
+    color: white
+
+}

@@ -1,0 +1,154 @@
+.addRecipeTitle{
+    display: flex;
+    justify-content: center;
+    font-weight: bold ; 
+    color:blueviolet;
+    font-size: 40px;
+    text-decoration: underline;
+    
+}
+
+.homeButton{
+    position: absolute;
+    left: 16px;
+    top: 40px;
+}
+
+
+
+.questions{
+  color: blueviolet;
+  font-weight: bold;
+  margin-bottom: 2px;
+
+}
+
+.choice{
+    margin-bottom: 16px;
+}
+
+
+
+.newIngredient{
+    display: flex;
+    justify-content: flex-start;
+    gap: 120px;
+   
+}
+
+.ingredientInput{
+    margin-bottom: 16px;
+    margin-top: 4px;
+}
+
+.listOfIngredient{
+    color: blueviolet;
+    font-weight: bold;
+    margin-bottom: 16px;
+
+}
+
+.addLineButton{
+    margin-left: 8px;
+    margin-bottom: 60px;
+    margin-top: 16px;
+
+}
+
+.descriptionOfSteps{
+    color: blueviolet;
+    font-weight: bold;
+    margin-bottom: 16px;
+ 
+
+}
+
+.textOfSteps{
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-right: 1200px;
+}
+
+.numbersOfStepList{
+    list-style: center;
+
+}
+
+.validationButton{
+    position: absolute;
+    left: 26px;
+    min-width: 32px;
+    text-decoration: none;
+    background-color:#8b5cf6;
+    border-radius: 5px;
+    font-weight: bold;
+    border: 1px solid #4c1d95;
+    color: white;
+    padding: 8px;
+    margin-top: 60px;
+   
+}
+
+.clearButton{
+    min-width: 32px;
+    text-decoration: none;
+    background-color:#8b5cf6;
+    border-radius: 5px;
+    font-weight: bold;
+    border: 1px solid #4c1d95;
+    color: white;
+    padding: 8px;
+    margin-top: 8px;
+    position:absolute;
+    right:32px;
+    top:0px;
+
+}
+
+.topPageManagement{
+    position: relative;
+}
+
+.nameOfStep{
+    color: blueviolet;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+   
+}
+
+.addStep{
+    min-width: 32px;
+    text-decoration: none;
+    background-color:#8b5cf6;
+    border-radius: 5px;
+    font-weight: bold;
+    border: 1px solid #4c1d95;
+    color: white;
+    padding: 8px;
+    margin-left: 16px;
+    margin-top: 16px;
+    display: block;
+    
+   
+}
+.subtitleStep{
+    color: blueviolet;
+    font-weight: bold;
+    justify-content: center;
+    display: flex;
+    text-decoration: underline;
+    margin-top: 16px;
+    margin-bottom: 32px;
+    
+
+}
+.inputName{
+   margin-bottom: 60px;
+   margin-top: 8px;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+}

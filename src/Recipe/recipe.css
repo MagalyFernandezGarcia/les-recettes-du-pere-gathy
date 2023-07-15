@@ -1,0 +1,107 @@
+.recipeTitle{
+    display: flex;
+    justify-content: center;
+    font-weight: bold ; 
+    color:blueviolet;
+    font-size: 40px;
+    text-decoration: underline;
+}
+
+.numberofEaters{
+    padding-top: 32px;
+    padding-left: 16px;
+   
+}
+
+.pictureOfFood{
+    width: 360px;
+    height: 360px;
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    right: 32px;
+    top: 85px;   
+}
+
+.listOfIngredients{
+    padding-bottom: 8px;
+    margin-left: 32px;
+}
+
+.ingredientTitle{
+    color:blueviolet;
+    text-decoration: wavy underline;
+    padding-top: 32px;
+    padding-left: 32px;
+    font-weight: bold;
+
+}
+
+.listOfSteps{
+    padding-left: 16px;
+    padding-bottom: 8px;
+}
+
+.stepName{
+    padding-bottom: 16px;
+    padding-left: 32px;
+    padding-top: 8px;
+    font-weight: bold;
+}
+
+.stepsTitle{
+    color:blueviolet;
+    text-decoration: wavy underline;
+    font-weight: bold;
+    margin-top: 80px;
+    margin-bottom: 16px;
+    margin-left: 32px;
+
+}
+
+.ingredientsInsideRecipe{
+    border-radius: 16px;
+    border: 2px solid blueviolet;   
+}
+
+.instructionsWithIngredient{
+    display: flex;
+    justify-content: space-between ;
+    gap: 120px;
+}
+
+.instructionSize {
+    flex: 3;
+}
+
+.ingredientSize {
+    flex: 2;  
+}
+
+
+
+.homeButton{
+    position: absolute;
+    left: 32px;
+    top: 1px;
+
+}
+
+
+
+
+.changeNumberOfServing{
+    width: 50px;
+}
+
+.updateButton{
+    position: absolute;
+    right: 140px;
+ 
+}
+
+.deleteButton{
+    position: absolute;
+    right: 16px;
+    
+}

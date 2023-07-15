@@ -17,8 +17,20 @@ enum REFS {
 const useAction = <T>(reference: REFS) => {
   const db = getDatabase();
 
-  const create = (recipe: T) => {
-    push(ref(db, reference), recipe);
+  const create = (recipe: T) => {  
+    return new Promise<string | null>((resolve, reject) => {
+      push(ref(db, reference), recipe)
+      .then(
+        (value) => {
+          console.warn("Recipe created. Recipe ID :", value.key)
+          resolve(value.key)
+        }, 
+        (e) => {
+          console.error("Error while creating recipe, ", e)
+          reject(e);
+        }
+      );
+    });
   };
 
   const update = (uid: string, recipe: Partial<T>) => {
@@ -61,10 +73,10 @@ export const useRecipe = () => {
   return useAction<IRecipe>(REFS.RECIPE);
 };
 
-export const toBase64 = (file: File) =>
+export const toBase64 = (file: File): Promise<string> =>
   new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result);
+    reader.onload = () => resolve(reader.result as string);
     reader.onerror = reject;
   });

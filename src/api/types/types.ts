@@ -1,6 +1,7 @@
 export enum RECIPE_CATEGORIES {
   SWEET = "sucré",
   SALTY = "salé",
+  
 }
 
 export enum INGREDIENT_UNITS {
@@ -9,6 +10,8 @@ export enum INGREDIENT_UNITS {
   TSP = "cuillère à café",
   SPRINKLE = "pincée",
   PIECE = "pièce",
+  MILILITRE = "mililitre",
+  LITRE = "litre"
 }
 
 export interface IIngredient {

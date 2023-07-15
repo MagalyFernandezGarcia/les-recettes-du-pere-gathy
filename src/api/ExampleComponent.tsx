@@ -4,7 +4,7 @@ import {
   IRecipe,
   RECIPE_CATEGORIES,
 } from "../api/types/types";
-import { generalBase64 } from "./generalBase64";
+import { photoBase64 } from "./photoBase64";
 
 const itemUid = "-NXa_PJ9EmNurG3czp9B";
 
@@ -12,7 +12,7 @@ const exampleRecipe: IRecipe = {
   name: "Poulet du général Tao",
   category: RECIPE_CATEGORIES.SALTY,
   servings: 2,
-  photo: generalBase64,
+  photo: photoBase64,
   steps: [
     {
       name: "Cuisson du riz",
@@ -98,6 +98,53 @@ export const ExampleComponent = () => {
   // getOne : récupérer une recette unique, prends en parametre l'uid de l'objet à récupérer
   const element = getOne(itemUid);
   console.log("getOne()", element);
+
+
+
+
+  interface Car {
+    brand: string;
+    model: string;
+    passengers: number;
+  }
+
+  interface Person {
+    age: number;
+    sexe: string;
+    address: string;
+    hairColor: string;
+    cars: Car[];
+  }
+
+  const obj: Person = {
+    age: 18,
+    sexe: "femme",
+    address: "rue de machin, ....",
+    hairColor: "blond",
+    cars: [
+      {
+        brand: "VW",
+        model: "ID4",
+        passengers: 5,
+      },
+      {
+        brand: "Smart",
+        model: "Fortwo",
+        passengers: 2,
+      },
+    ],
+  };
+
+  const helloWorld = (person: Person) => {};
+  const test = (person: Person) => {};
+
+  // helloWorld({
+  //   age: 18,
+  //   sexe: "femme",
+  //   address: "rue de machin, ....",
+  //   hairColor: "brun"
+  // })
+
 
   return (
     <div>
