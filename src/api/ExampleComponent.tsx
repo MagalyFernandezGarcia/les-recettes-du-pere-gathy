@@ -99,53 +99,6 @@ export const ExampleComponent = () => {
   const element = getOne(itemUid);
   console.log("getOne()", element);
 
-
-
-
-  interface Car {
-    brand: string;
-    model: string;
-    passengers: number;
-  }
-
-  interface Person {
-    age: number;
-    sexe: string;
-    address: string;
-    hairColor: string;
-    cars: Car[];
-  }
-
-  const obj: Person = {
-    age: 18,
-    sexe: "femme",
-    address: "rue de machin, ....",
-    hairColor: "blond",
-    cars: [
-      {
-        brand: "VW",
-        model: "ID4",
-        passengers: 5,
-      },
-      {
-        brand: "Smart",
-        model: "Fortwo",
-        passengers: 2,
-      },
-    ],
-  };
-
-  const helloWorld = (person: Person) => {};
-  const test = (person: Person) => {};
-
-  // helloWorld({
-  //   age: 18,
-  //   sexe: "femme",
-  //   address: "rue de machin, ....",
-  //   hairColor: "brun"
-  // })
-
-
   return (
     <div>
       {/* create: ajoute un élément en DB, prends en parametre un objet de type IRecipe */}

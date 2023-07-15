@@ -2,7 +2,6 @@ import "./recipeList.css";
 import { useRecipe } from "../api/useDatabase";
 import { RECIPE_CATEGORIES } from "../api/types/types";
 import { Link } from "react-router-dom";
-import { ButtonOfNavigation } from "../Button/Button";
 
 export const RecipeList = () => {
   const recipeApi = useRecipe();
@@ -10,7 +9,6 @@ export const RecipeList = () => {
 
   console.log(recipes);
 
-  const test = recipeApi.getOne("-NXifj2zytiACcciWcxo");
   const saltyRecipes = recipes.filter(
     (recipe) => recipe.category === RECIPE_CATEGORIES.SALTY
   );

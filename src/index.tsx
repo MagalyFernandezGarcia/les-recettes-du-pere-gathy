@@ -5,7 +5,6 @@ import { App } from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { firebaseConfig } from "./firebaseConfig";
 import { initializeApp } from "firebase/app";
-import { ExampleComponent } from "./api/ExampleComponent";
 
 initializeApp(firebaseConfig);
 
