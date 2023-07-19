@@ -2,12 +2,17 @@ import "./recipeList.css";
 import { useRecipe } from "../api/useDatabase";
 import { RECIPE_CATEGORIES } from "../api/types/types";
 import { Link } from "react-router-dom";
+import { useAuth } from "../api/useAuth";
 
 export const RecipeList = () => {
   const recipeApi = useRecipe();
   const recipes = recipeApi.getAll();
+  const { login, logout, user, isUserAllowed } = useAuth();
 
-  console.log(recipes);
+  console.log("user", user);
+  console.log("isUserAllowed", isUserAllowed);
+
+  // console.log(recipes);
 
   const saltyRecipes = recipes.filter(
     (recipe) => recipe.category === RECIPE_CATEGORIES.SALTY
@@ -30,6 +35,9 @@ export const RecipeList = () => {
             </div> */}
           </div>
         </div>
+
+        <button onClick={login}>Login</button>
+        <button onClick={logout}>Logout</button>
 
         <div className="foodType">
           <details>
