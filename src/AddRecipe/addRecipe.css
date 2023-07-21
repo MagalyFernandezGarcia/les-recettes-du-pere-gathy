@@ -20,11 +20,13 @@
   color: blueviolet;
   font-weight: bold;
   margin-bottom: 2px;
+  margin-left: 8px;
 
 }
 
 .choice{
     margin-bottom: 16px;
+    margin-left: 8px;
 }
 
 
@@ -39,6 +41,7 @@
 .ingredientInput{
     margin-bottom: 16px;
     margin-top: 4px;
+    margin-left: 8px;
     }
     
 input::-webkit-outer-spin-button,
@@ -51,20 +54,17 @@ input::-webkit-inner-spin-button {
     color: blueviolet;
     font-weight: bold;
     margin-bottom: 16px;
-
-}
-
-.addLineButton{
     margin-left: 8px;
-    margin-bottom: 60px;
-    margin-top: 16px;
 
 }
+
+
 
 .descriptionOfSteps{
     color: blueviolet;
     font-weight: bold;
     margin-bottom: 16px;
+    margin-left: 8px;
  
 
 }
@@ -83,28 +83,11 @@ input::-webkit-inner-spin-button {
 .validationButton{
     position: absolute;
     left: 26px;
-    min-width: 32px;
-    text-decoration: none;
-    background-color:#8b5cf6;
-    border-radius: 5px;
-    font-weight: bold;
-    border: 1px solid #4c1d95;
-    color: white;
-    padding: 8px;
-    margin-top: 60px;
+    bottom: 120px;
    
 }
 
 .clearButton{
-    min-width: 32px;
-    text-decoration: none;
-    background-color:#8b5cf6;
-    border-radius: 5px;
-    font-weight: bold;
-    border: 1px solid #4c1d95;
-    color: white;
-    padding: 8px;
-    margin-top: 8px;
     position:absolute;
     right:32px;
     top:0px;
@@ -124,20 +107,10 @@ input::-webkit-inner-spin-button {
 }
 
 .addStep{
-    min-width: 32px;
-    text-decoration: none;
-    background-color:#8b5cf6;
-    border-radius: 5px;
-    font-weight: bold;
-    border: 1px solid #4c1d95;
-    color: white;
-    padding: 8px;
-    margin-left: 16px;
-    margin-top: 16px;
+     margin-left: 16px;
     display: block;
-    
-   
 }
+
 .subtitleStep{
     color: blueviolet;
     font-weight: bold;
@@ -157,4 +130,8 @@ input::-webkit-inner-spin-button {
 .container{
     display: flex;
     justify-content: center;
+}
+
+.ingredientAsk{
+    margin-left: 8px;
 }

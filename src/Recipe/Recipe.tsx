@@ -1,10 +1,10 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { useRecipe } from "../api/useDatabase";
 import "./recipe.css";
 import { IRecipeWithUid, IStep } from "../api/types/types";
-
+import { useAuth } from "../api/useAuth";
 import { Fragment, useState } from "react";
-import { ButtonOfNavigation } from "../Button/Button";
+import { Button, ButtonOfNavigation } from "../Button/Button";
 
 export const ListOfIngredients = ({
   step,
@@ -34,6 +34,8 @@ export const Recipe = () => {
   const recipeApi = useRecipe();
   const recipe = recipeApi.getOne(recipeUid);
   const [numberOfEaters, setNumberOfEaters] = useState(recipe?.servings);
+  const navigate = useNavigate();
+  const { isUserAllowed } = useAuth();
 
   if (!recipe) {
     return null;
@@ -46,14 +48,25 @@ export const Recipe = () => {
         <div className="homeButton">
           <ButtonOfNavigation road="/" name="Home" />
         </div>
-        <div className="updateButton">
-          <ButtonOfNavigation road="/" name="Modifier" />
-        </div>
-        <div className="deleteButton">
-          <ButtonOfNavigation road="/" name="Supprimer" />
-        </div>
+        {isUserAllowed && (
+          <div className="updateButton">
+            <ButtonOfNavigation road="/" name="Modifier" />
+          </div>
+        )}
+        {isUserAllowed && (
+          <div className="deleteButton">
+            <Button
+              type="button"
+              onClick={() => {
+                recipeApi.remove(recipeUid);
+                navigate("/");
+              }}
+            >
+              Supprimer
+            </Button>
+          </div>
+        )}
       </div>
-
       <div className="numberofEaters">
         Pour:{" "}
         <input
@@ -67,22 +80,25 @@ export const Recipe = () => {
         personnes
       </div>
 
-      {recipe.photo && (
-        <img className="pictureOfFood" src={recipe.photo} alt="recette" />
-      )}
-
-      <div>
-        <div className="ingredientTitle">Ingrédients</div>
-        <ul className="listOfIngredients">
-          {recipe.steps.map((step) => (
-            <ListOfIngredients
-              key={step.name}
-              step={step}
-              recipe={recipe}
-              numberOfEaters={numberOfEaters}
-            />
-          ))}
-        </ul>
+      <div className="topPageContainer">
+        <div className="recapIngredient">
+          <div>
+            <div className="ingredientTitle">Ingrédients</div>
+            <ul className="listOfIngredients">
+              {recipe.steps.map((step) => (
+                <ListOfIngredients
+                  key={step.name}
+                  step={step}
+                  recipe={recipe}
+                  numberOfEaters={numberOfEaters}
+                />
+              ))}
+            </ul>
+          </div>
+        </div>
+        {recipe.photo && (
+          <img className="pictureOfFood" src={recipe.photo} alt="recette" />
+        )}
       </div>
 
       <div>

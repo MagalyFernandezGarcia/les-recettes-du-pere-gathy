@@ -18,16 +18,21 @@ export const useAuth = () => {
   const provider = new GoogleAuthProvider();
 
   const login = async () => {
-    const {
-      user: { providerData },
-    } = await signInWithPopup(auth, provider);
-    const userData = providerData[0];
-    if (userData.displayName && userData.email) {
-      setUser({
-        name: userData.displayName,
-        mail: userData.email,
-      });
+    try {
+      const {
+        user: { providerData },
+      } = await signInWithPopup(auth, provider);
+      const userData = providerData[0];
+      if (userData.displayName && userData.email) {
+        setUser({
+          name: userData.displayName,
+          mail: userData.email,
+        });
+      }
+    } catch(e) {
+      console.error(e);
     }
+
   };
 
   const logout = async () => {

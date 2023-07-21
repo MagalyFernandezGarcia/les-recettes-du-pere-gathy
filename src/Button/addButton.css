@@ -1,0 +1,12 @@
+.addLineButton{
+    margin-left: 8px;
+    margin-bottom: 60px;
+    margin-top: 16px;
+    background-color: #8b5cf6;
+    color: white;
+    border: 1px solid #4c1d95;
+    border-radius: 5px;
+    cursor: pointer;
+   
+
+}

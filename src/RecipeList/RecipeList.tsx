@@ -3,16 +3,12 @@ import { useRecipe } from "../api/useDatabase";
 import { RECIPE_CATEGORIES } from "../api/types/types";
 import { Link } from "react-router-dom";
 import { useAuth } from "../api/useAuth";
+import { Button, ButtonOfNavigation } from "../Button/Button";
 
 export const RecipeList = () => {
   const recipeApi = useRecipe();
   const recipes = recipeApi.getAll();
-  const { login, logout, user, isUserAllowed } = useAuth();
-
-  console.log("user", user);
-  console.log("isUserAllowed", isUserAllowed);
-
-  // console.log(recipes);
+  const { login, logout, isUserAllowed } = useAuth();
 
   const saltyRecipes = recipes.filter(
     (recipe) => recipe.category === RECIPE_CATEGORIES.SALTY
@@ -25,19 +21,35 @@ export const RecipeList = () => {
     <>
       <div className="test">
         <div className="headerBox">
+          <div>
+            {isUserAllowed ? (
+              <Button
+                type="submit"
+                onClick={logout}
+                children="Se déconnecter"
+                className="loginButton"
+              />
+            ) : (
+              <Button
+                type="submit"
+                onClick={login}
+                children="Se connecter"
+                className="loginButton"
+              />
+            )}
+          </div>
           <div className="mainTitle">
             Les recettes du père Gathy
-            {/* <div className="addRecipe">
-              <ButtonOfNavigation
-                road="/recipe/add"
-                name="Ajouter une recette"
-              />
-            </div> */}
+            <div className="addRecipe">
+              {isUserAllowed && (
+                <ButtonOfNavigation
+                  road="/recipe/add"
+                  name="Ajouter une recette"
+                />
+              )}
+            </div>
           </div>
         </div>
-
-        <button onClick={login}>Login</button>
-        <button onClick={logout}>Logout</button>
 
         <div className="foodType">
           <details>

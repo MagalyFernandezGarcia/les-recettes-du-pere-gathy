@@ -9,7 +9,8 @@ import {
   RECIPE_CATEGORIES,
 } from "../api/types/types";
 import { FormEvent, useState } from "react";
-import { ButtonOfNavigation } from "../Button/Button";
+import { Button, ButtonOfNavigation } from "../Button/Button";
+import { AddButton } from "../Button/AddButton";
 
 export const AddIngredient = ({
   lineNumber,
@@ -23,7 +24,7 @@ export const AddIngredient = ({
       <div className="newIngredient">
         <div>
           <div>
-            <label htmlFor="ingredientName">
+            <label htmlFor="ingredientName" className="ingredientAsk">
               Entre le nom de ton ingrédient
             </label>
           </div>
@@ -109,15 +110,12 @@ export const NewStep = ({ newStepNumber }: { newStepNumber: number }) => {
           stepIndex={newStepNumber}
         />
       ))}
-      <button
-        className="addLineButton"
-        type="button"
+      <AddButton
         onClick={() => {
           setAddIngredients([...addIngredients, ""]);
         }}
-      >
-        +
-      </button>
+      />
+
       <div className="descriptionOfSteps">Décris les étapes à suivre</div>
       <ol className="numbersOfStepList">
         {stepsToFollow.map((stepToFollow, index) => (
@@ -128,15 +126,11 @@ export const NewStep = ({ newStepNumber }: { newStepNumber: number }) => {
           />
         ))}
       </ol>
-      <button
-        className="addLineButton"
-        type="button"
+      <AddButton
         onClick={() => {
           setStepsToFollow([...stepsToFollow, ""]);
         }}
-      >
-        +
-      </button>
+      />
     </>
   );
 };
@@ -246,9 +240,9 @@ export const AddRecepie = () => {
         <div className="homeButton">
           <ButtonOfNavigation road="/" name="Home" />
         </div>
-        <button type="reset" className="clearButton">
+        <Button type="reset" className="clearButton">
           Effacer tout
-        </button>
+        </Button>
       </div>
       <div className="questions">Entre le nom de ta recette : </div>
       <input
@@ -286,7 +280,7 @@ export const AddRecepie = () => {
         <NewStep key={index} newStepNumber={index} />
       ))}
 
-      <button
+      <Button
         className="addStep"
         type="button"
         onClick={() => {
@@ -294,11 +288,11 @@ export const AddRecepie = () => {
         }}
       >
         Ajouter une étape
-      </button>
+      </Button>
 
-      <button type="submit" className="validationButton">
+      <Button type="submit" className="validationButton">
         Valider
-      </button>
+      </Button>
     </form>
   );
 };
