@@ -81,9 +81,9 @@ input::-webkit-inner-spin-button {
 }
 
 .validationButton{
-    position: absolute;
+    position: relative;
     left: 26px;
-    bottom: 120px;
+    top: 32px;
    
 }
 
@@ -134,4 +134,24 @@ input::-webkit-inner-spin-button {
 
 .ingredientAsk{
     margin-left: 8px;
+}
+
+.deleteStepButton{
+
+    margin-left: 32px;
+    margin-bottom: 32px;
+ 
+}
+
+.deleteIngredient{
+    position: relative;
+    top: 8px;
+    
+ 
+}
+
+.deleteInstruction{
+
+    margin-left: 32px;
+   
 }

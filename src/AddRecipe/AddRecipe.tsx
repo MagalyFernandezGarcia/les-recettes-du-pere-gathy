@@ -15,9 +15,11 @@ import { AddButton } from "../Button/AddButton";
 export const AddIngredient = ({
   lineNumber,
   stepIndex,
+  deleteFunction,
 }: {
   lineNumber: number;
   stepIndex: Number;
+  deleteFunction: () => void;
 }) => {
   return (
     <>
@@ -62,6 +64,15 @@ export const AddIngredient = ({
             ))}
           </select>
         </div>
+        <div>
+          <Button
+            className="deleteIngredient"
+            type="button"
+            onClick={deleteFunction}
+          >
+            Supprimer
+          </Button>
+        </div>
       </div>
     </>
   );
@@ -70,9 +81,11 @@ export const AddIngredient = ({
 export const AddSteps = ({
   stepNumber,
   mainStepIndex,
+  deleteFunction,
 }: {
   stepNumber: number;
   mainStepIndex: number;
+  deleteFunction: () => void;
 }) => {
   return (
     <>
@@ -84,17 +97,37 @@ export const AddSteps = ({
           rows={5}
           cols={120}
         ></textarea>
+        <Button
+          className="deleteInstruction"
+          type="button"
+          onClick={deleteFunction}
+        >
+          Supprimer l'instruction
+        </Button>
       </li>
     </>
   );
 };
 
-export const NewStep = ({ newStepNumber }: { newStepNumber: number }) => {
-  const [addIngredients, setAddIngredients] = useState([""]);
-  const [stepsToFollow, setStepsToFollow] = useState([""]);
+export const NewStep = ({
+  newStepNumber,
+  deleteLine,
+  deleteStep,
+}: {
+  newStepNumber: number;
+  deleteLine: (
+    index: number,
+    setState: React.Dispatch<React.SetStateAction<number[]>>
+  ) => void;
+  deleteStep: () => void;
+}) => {
+  const [addIngredients, setAddIngredients] = useState([0]);
+  const [stepsToFollow, setStepsToFollow] = useState([0]);
+
   return (
     <>
       <div className="nameOfStep">Nomme ton étape</div>
+
       <div className="container">
         <input
           placeholder="Nom de l'étape"
@@ -105,14 +138,18 @@ export const NewStep = ({ newStepNumber }: { newStepNumber: number }) => {
       <div className="listOfIngredient">Liste tes ingrédients : </div>
       {addIngredients.map((addingredient, index) => (
         <AddIngredient
-          key={index}
+          key={addingredient}
           lineNumber={index}
           stepIndex={newStepNumber}
+          deleteFunction={() => deleteLine(index, setAddIngredients)}
         />
       ))}
       <AddButton
         onClick={() => {
-          setAddIngredients([...addIngredients, ""]);
+          setAddIngredients([
+            ...addIngredients,
+            addIngredients[addIngredients.length - 1] + 1,
+          ]);
         }}
       />
 
@@ -120,17 +157,26 @@ export const NewStep = ({ newStepNumber }: { newStepNumber: number }) => {
       <ol className="numbersOfStepList">
         {stepsToFollow.map((stepToFollow, index) => (
           <AddSteps
-            key={index}
+            key={stepToFollow}
             stepNumber={index}
             mainStepIndex={newStepNumber}
+            deleteFunction={() => deleteLine(index, setStepsToFollow)}
           />
         ))}
       </ol>
       <AddButton
         onClick={() => {
-          setStepsToFollow([...stepsToFollow, ""]);
+          setStepsToFollow([
+            ...stepsToFollow,
+            stepsToFollow[stepsToFollow.length - 1] + 1,
+          ]);
         }}
       />
+      <div className="deleteStepButton">
+        <Button type="button" onClick={deleteStep}>
+          Supprimer l'étape
+        </Button>
+      </div>
     </>
   );
 };
@@ -141,7 +187,19 @@ export const AddRecepie = () => {
 
   const recipeCategorys = Object.values(RECIPE_CATEGORIES);
 
-  const [newStep, setNewStep] = useState([""]);
+  const [newStep, setNewStep] = useState([0]);
+
+  const deleteLine = (
+    index: number,
+    setState: React.Dispatch<React.SetStateAction<number[]>>
+  ) => {
+    setState((currentState) => {
+      const newArray = [...currentState];
+      console.log("index", index);
+      newArray.splice(index, 1);
+      return newArray;
+    });
+  };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -218,8 +276,6 @@ export const AddRecepie = () => {
       steps: stepsArray,
     };
 
-    console.log("creteData", createData);
-
     if (
       createData.name !== "" &&
       createData.servings > 0 &&
@@ -277,14 +333,19 @@ export const AddRecepie = () => {
       />
       <h3 className="subtitleStep">Ajoute les étapes de ta recette</h3>
       {newStep.map((step, index) => (
-        <NewStep key={index} newStepNumber={index} />
+        <NewStep
+          key={step}
+          newStepNumber={index}
+          deleteLine={deleteLine}
+          deleteStep={() => deleteLine(index, setNewStep)}
+        />
       ))}
 
       <Button
         className="addStep"
         type="button"
         onClick={() => {
-          setNewStep([...newStep, ""]);
+          setNewStep([...newStep, newStep[newStep.length - 1] + 1]);
         }}
       >
         Ajouter une étape
