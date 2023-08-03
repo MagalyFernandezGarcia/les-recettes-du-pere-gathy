@@ -54,9 +54,10 @@ export const Recipe = () => {
           </div>
         )}
         {isUserAllowed && (
-          <div className="deleteButton">
+          <div className="deleteRecipeButton">
             <Button
               type="button"
+              colorIsRed={true}
               onClick={() => {
                 recipeApi.remove(recipeUid);
                 navigate("/");

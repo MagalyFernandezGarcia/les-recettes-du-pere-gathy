@@ -69,6 +69,7 @@ export const AddIngredient = ({
             className="deleteIngredient"
             type="button"
             onClick={deleteFunction}
+            colorIsRed={true}
           >
             Supprimer
           </Button>
@@ -101,6 +102,7 @@ export const AddSteps = ({
           className="deleteInstruction"
           type="button"
           onClick={deleteFunction}
+          colorIsRed={true}
         >
           Supprimer l'instruction
         </Button>
@@ -173,7 +175,7 @@ export const NewStep = ({
         }}
       />
       <div className="deleteStepButton">
-        <Button type="button" onClick={deleteStep}>
+        <Button type="button" onClick={deleteStep} colorIsRed={true}>
           Supprimer l'étape
         </Button>
       </div>
@@ -296,7 +298,7 @@ export const AddRecepie = () => {
         <div className="homeButton">
           <ButtonOfNavigation road="/" name="Home" />
         </div>
-        <Button type="reset" className="clearButton">
+        <Button type="reset" className="clearButton" colorIsRed={false}>
           Effacer tout
         </Button>
       </div>
@@ -344,6 +346,7 @@ export const AddRecepie = () => {
       <Button
         className="addStep"
         type="button"
+        colorIsRed={false}
         onClick={() => {
           setNewStep([...newStep, newStep[newStep.length - 1] + 1]);
         }}
@@ -351,7 +354,7 @@ export const AddRecepie = () => {
         Ajouter une étape
       </Button>
 
-      <Button type="submit" className="validationButton">
+      <Button type="submit" className="validationButton" colorIsRed={false}>
         Valider
       </Button>
     </form>

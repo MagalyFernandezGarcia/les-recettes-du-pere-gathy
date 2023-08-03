@@ -28,6 +28,7 @@ export const RecipeList = () => {
                 onClick={logout}
                 children="Se déconnecter"
                 className="loginButton"
+                colorIsRed={false}
               />
             ) : (
               <Button
@@ -35,6 +36,7 @@ export const RecipeList = () => {
                 onClick={login}
                 children="Se connecter"
                 className="loginButton"
+                colorIsRed={false}
               />
             )}
           </div>

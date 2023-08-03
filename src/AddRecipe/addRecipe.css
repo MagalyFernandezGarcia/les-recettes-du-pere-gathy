@@ -143,10 +143,8 @@ input::-webkit-inner-spin-button {
  
 }
 
-.deleteIngredient{
-    position: relative;
-    top: 8px;
-    
+.deleteIngredient{  
+   text-align: center;
  
 }
 

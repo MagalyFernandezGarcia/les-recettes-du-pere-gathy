@@ -7,6 +7,7 @@ type ButtonPropsType = {
   type: "submit" | "reset" | "button";
   onClick?: () => void;
   className?: string;
+  colorIsRed: boolean;
 };
 
 const ButtonStyle = ({
@@ -14,11 +15,12 @@ const ButtonStyle = ({
   type,
   onClick,
   className,
+  colorIsRed,
 }: ButtonPropsType) => (
   <button
     type={type}
     onClick={onClick}
-    className={className + " navigationButton"}
+    className={className + (colorIsRed ? " deleteButton" : " navigationButton")}
   >
     {children}
   </button>
@@ -32,7 +34,9 @@ export const ButtonOfNavigation = ({
   name: string;
 }) => (
   <Link to={road}>
-    <ButtonStyle type="button">{name}</ButtonStyle>
+    <ButtonStyle type="button" colorIsRed={false}>
+      {name}{" "}
+    </ButtonStyle>
   </Link>
 );
 
@@ -41,8 +45,14 @@ export const Button = ({
   type,
   onClick,
   className,
+  colorIsRed,
 }: ButtonPropsType) => (
-  <ButtonStyle type={type} onClick={onClick} className={className}>
+  <ButtonStyle
+    type={type}
+    onClick={onClick}
+    className={className}
+    colorIsRed={colorIsRed}
+  >
     {children}
   </ButtonStyle>
 );
